@@ -86,3 +86,28 @@ nextImageButton.addEventListener("click", () => {
 
   galleryImage.src = currentGallery[currentImageIndex];
 });
+
+
+const revealElements = document.querySelectorAll(
+  ".reveal-left, .reveal-right, .reveal-up, .reveal-fade"
+);
+
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+
+        // Faz a animação acontecer apenas uma vez
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.2,
+  }
+);
+
+revealElements.forEach((element) => {
+  observer.observe(element);
+});
