@@ -610,10 +610,25 @@ textarea {
   border: none;
   background: transparent;
 
+  color: var(--color-primary-dark);
+
   font-size: 2rem;
   cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
+.gallery-modal__arrow {
+  border: none;
+  background: transparent;
+
+  color: var(--color-primary-dark);
+
+  font-size: 3rem;
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
 .gallery-modal__main {
   display: flex;
   align-items: center;
@@ -629,13 +644,6 @@ textarea {
   border-radius: 15px;
 }
 
-.gallery-modal__arrow {
-  border: none;
-  background: transparent;
-
-  font-size: 3rem;
-  cursor: pointer;
-}
 
 .gallery-modal__thumbnails {
   display: flex;
@@ -663,7 +671,16 @@ textarea {
 
   object-fit: cover;
 }
+.gallery-modal__close,
+.gallery-modal__arrow {
+  transition: color .3s ease, transform .3s ease;
+}
 
+.gallery-modal__close:hover,
+.gallery-modal__arrow:hover {
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
 /* ANIMAÇÕES AO ROLAR A PÁGINA */
 
 .reveal-left,
