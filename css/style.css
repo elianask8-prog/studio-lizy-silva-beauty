@@ -724,6 +724,42 @@ textarea {
 .service-card:nth-child(3) {
   transition-delay: 0.3s;
 }
+
+.contact__socials a {
+  width: 62px;
+  height: 62px;
+
+  min-width: 62px;
+  min-height: 62px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: var(--color-white);
+
+  font-size: 1.7rem;
+
+  transition: 0.35s ease;
+}
+.contact__socials a:hover{
+
+    transform: translateY(-6px);
+
+    background: white;
+
+    color: var(--color-primary);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.18);
+
+}
 /* =========================
    10. RESPONSIVIDADE
 ========================= */
@@ -896,19 +932,23 @@ textarea {
   }
 
   .hero__button {
-    position: relative;
+  position: relative;
 
-    left: auto;
-    top: auto;
+  left: auto;
+  top: auto;
+  transform: none;
 
-    transform: none;
+  display: flex;
 
-    width: min(90%, 280px);
-    min-height: 50px;
-    margin: 18px auto 30px;
+  width: min(88%, 280px);
+  min-height: 48px;
 
-    font-size: 0.9rem;
-  }
+  margin: 18px auto 28px;
+  padding: 12px 20px;
+
+  font-size: 0.88rem;
+  text-align: center;
+}
 
   .hero__button:hover {
     transform: translateY(-3px);
@@ -955,14 +995,20 @@ textarea {
   }
 
   .contact__socials {
-    width: 100%;
-    flex-direction: column;
-  }
+  width: 100%;
 
-  .contact__socials a {
-    width: 100%;
-  }
+  flex-direction: row;
+  justify-content: center;
+  gap: 18px;
+}
 
+.contact__socials a {
+  width: 58px;
+  height: 58px;
+
+  min-width: 58px;
+  min-height: 58px;
+}
   .footer {
     padding: 20px 15px;
 

@@ -3,6 +3,8 @@ const galleryButtons = document.querySelectorAll(".service-card__button");
 const closeGalleryButton = document.querySelector("#closeGallery");
 const galleryImage = document.querySelector("#galleryImage");
 const galleryThumbnails = document.querySelector("#galleryThumbnails");
+
+const previousImageButton = document.querySelector("#previousImage");
 const nextImageButton = document.querySelector("#nextImage");
 
 const galleries = {
@@ -82,6 +84,16 @@ nextImageButton.addEventListener("click", () => {
 
   if (currentImageIndex >= currentGallery.length) {
     currentImageIndex = 0;
+  }
+
+  galleryImage.src = currentGallery[currentImageIndex];
+});
+
+previousImageButton.addEventListener("click", () => {
+  currentImageIndex--;
+
+  if (currentImageIndex < 0) {
+    currentImageIndex = currentGallery.length - 1;
   }
 
   galleryImage.src = currentGallery[currentImageIndex];
