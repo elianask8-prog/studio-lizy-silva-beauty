@@ -59,7 +59,7 @@ galleryButtons.forEach((button) => {
       thumbnailImage.alt = `Miniatura ${index + 1} de ${galleryName}`;
 
       thumbnailButton.appendChild(thumbnailImage);
-      
+
       thumbnailButton.addEventListener("click", () => {
         galleryImage.src = imagePath;
         galleryImage.alt = `Trabalho ${index + 1} de ${galleryName}`;
@@ -77,7 +77,6 @@ closeGalleryButton.addEventListener("click", () => {
   galleryModal.classList.remove("is-open");
   galleryModal.setAttribute("aria-hidden", "true");
 });
-
 
 nextImageButton.addEventListener("click", () => {
   currentImageIndex++;
@@ -99,9 +98,8 @@ previousImageButton.addEventListener("click", () => {
   galleryImage.src = currentGallery[currentImageIndex];
 });
 
-
 const revealElements = document.querySelectorAll(
-  ".reveal-left, .reveal-right, .reveal-up, .reveal-fade"
+  ".reveal-left, .reveal-right, .reveal-up, .reveal-fade",
 );
 
 const observer = new IntersectionObserver(
@@ -117,9 +115,56 @@ const observer = new IntersectionObserver(
   },
   {
     threshold: 0.2,
-  }
+  },
 );
 
 revealElements.forEach((element) => {
   observer.observe(element);
 });
+
+const backToTopButton = document.querySelector("#backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 500) {
+    backToTopButton.classList.add("is-visible");
+  } else {
+    backToTopButton.classList.remove("is-visible");
+  }
+});
+
+backToTopButton.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+
+/* ==========================
+   PARALLAX DA FOTO
+========================== */
+
+const aboutSection = document.querySelector(".about");
+const parallaxImage = document.querySelector(".parallax-image");
+
+function parallaxEffect() {
+  if (!aboutSection || !parallaxImage) return;
+
+  const rect = aboutSection.getBoundingClientRect();
+
+  // Executa apenas quando a seção está visível
+  if (rect.bottom > 0 && rect.top < window.innerHeight) {
+
+    // Calcula o centro da seção
+    const offset = rect.top - window.innerHeight / 2;
+
+    // Quanto menor o número, mais suave o efeito
+    const translate = offset * -0.12;
+
+    parallaxImage.style.transform = `translateY(${translate}px)`;
+
+  }
+}
+
+window.addEventListener("scroll", parallaxEffect);
+window.addEventListener("load", parallaxEffect);
